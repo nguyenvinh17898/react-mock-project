@@ -1,0 +1,10 @@
+.menu {
+  overflow: auto;
+  height: 300px;
+}
+
+.menu thead {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+}

@@ -1,0 +1,33 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.header .information {
+  display: flex;
+}
+
+.header .information .label {
+  margin-right: 10px;
+  font-weight: bold;
+}
+
+.header .list-button{
+    text-align: center;
+}
+
+.header .toggle {
+  margin-top: 1rem;
+  background-color: transparent;
+  color: #9f5ccc;
+  border: none;
+  padding: 0.15rem 1.5rem;
+  cursor: pointer;
+}
+
+.header .toggle:hover {
+  background-color: transparent;
+  color: #ae82cc;
+}
