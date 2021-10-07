@@ -1,29 +1,31 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import QRCode from "qrcode.react";
 
 import classes from "./Header.module.css";
-import { Button } from "semantic-ui-react";
+import { Button, Modal } from "semantic-ui-react";
+import ModalUrl from "./ModalUrl";
 
 const Header = (props) => {
-  const location = useLocation();
+  const [openModal, setOpenModal] = useState(false);
+  const [url, setUrl] = useState('');
 
   const switchResMode = () => {
     props.switchResMode();
   };
 
-  const getUrlForAdim = () => {
-    // return (
-    //   <div>
-    //     <QRCode
-    //       id="qrcode"
-    //       value= window.location.href
-    //       size={290}
-    //       level={"H"}
-    //       includeMargin={true}
-    //     />
-    //   </div>
-    // );
+  const showModal = (admin = true) => {
+    setOpenModal(true);
+    if(admin){
+      setUrl(window.location.href);
+    }else{
+      setUrl(window.location.href.replace('admin', 'shop'));
+    }
+  };
+
+  const hideModal = () => {
+    setOpenModal(false);
+    
   };
 
   return (
@@ -40,8 +42,8 @@ const Header = (props) => {
       </div>
       <div className={`${classes["list-button"]}`}>
         <div>
-          <Button onClick={getUrlForAdim}>Copy</Button>
-          <Button>Share</Button>
+          <Button onClick={showModal}>Copy</Button>
+          <Button onClick={()=>showModal(false)}>Share</Button>
         </div>
         <button
           type="button"
@@ -51,6 +53,7 @@ const Header = (props) => {
           {props.isMenu ? "View Orders" : "View Menu"}
         </button>
       </div>
+      <ModalUrl open={openModal} hideModal={hideModal} url={url} />
     </div>
   );
 };

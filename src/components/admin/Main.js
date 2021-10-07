@@ -14,7 +14,7 @@ const Main =()=>{
 
     return(
         <div className={classes.main} isMenu={isMenu}>
-            <Header switchResMode={switchResMode} />
+            <Header switchResMode={switchResMode} isMenu={isMenu} />
             {isMenu && <Menu />}
             {!isMenu && <Orders />}
         </div>

@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
-import { Button, Checkbox, Form } from "semantic-ui-react";
+import { useHistory } from "react-router";
 
+import { Button, Checkbox, Form } from "semantic-ui-react";
 import classes from "./AddRestaurant.module.css";
 const AddRestaurantForm = () => {
   const imgRef = useRef(null);
@@ -10,12 +11,14 @@ const AddRestaurantForm = () => {
   const [enteredName, setEnteredName] = useState();
   const [enteredPhone, setEnteredPhone] = useState();
 
+  const history = useHistory();
+
   const chooseImage = async () => {
     await imgRef.current.click();
   };
 
   const submitHandler = () => {
-    if ((nameRef.current.value.length === 0 || phoneRef.current.length === 0)) {
+    if (nameRef.current.value.length === 0 || phoneRef.current.length === 0) {
       return;
     }
 
@@ -24,8 +27,7 @@ const AddRestaurantForm = () => {
 
     //call api
 
-    
-
+    history.push("/admin/10");
   };
   return (
     <section className={classes.add}>
