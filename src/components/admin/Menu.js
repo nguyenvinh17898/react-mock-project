@@ -1,8 +1,19 @@
-import { Button, Table } from "semantic-ui-react";
+import { useState } from "react";
 
+import { Button, Table } from "semantic-ui-react";
 import classes from "./Menu.module.css";
+import ModalMenu from "./ModalMenu";
 
 const Menu = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const showModal =()=>{
+    setOpenModal(true);
+  }
+
+  const hideModal =()=>{
+    setOpenModal(false);
+  }
   return (
     <div className={classes.menu}>
       <Table fixed>
@@ -37,7 +48,7 @@ const Menu = () => {
             <Table.Cell>Product 1</Table.Cell>
             <Table.Cell>$8.00</Table.Cell>
             <Table.Cell>
-              <Button>Edit</Button>
+              <Button onClick={showModal}>Edit</Button>
               <Button>Delete</Button>
             </Table.Cell>
           </Table.Row>
@@ -50,35 +61,9 @@ const Menu = () => {
               <Button>Delete</Button>
             </Table.Cell>
           </Table.Row>
-          <Table.Row>
-            <Table.Cell>Jill</Table.Cell>
-            <Table.Cell>Product 3</Table.Cell>
-            <Table.Cell>$10.00</Table.Cell>
-            <Table.Cell>
-              <Button>Edit</Button>
-              <Button>Delete</Button>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Jill</Table.Cell>
-            <Table.Cell>Product 3</Table.Cell>
-            <Table.Cell>$10.00</Table.Cell>
-            <Table.Cell>
-              <Button>Edit</Button>
-              <Button>Delete</Button>
-            </Table.Cell>
-          </Table.Row>
-          <Table.Row>
-            <Table.Cell>Jill</Table.Cell>
-            <Table.Cell>Product 3</Table.Cell>
-            <Table.Cell>$10.00</Table.Cell>
-            <Table.Cell>
-              <Button>Edit</Button>
-              <Button>Delete</Button>
-            </Table.Cell>
-          </Table.Row>
         </Table.Body>
       </Table>
+      <ModalMenu open={openModal} hideModal={hideModal}/>
     </div>
   );
 };

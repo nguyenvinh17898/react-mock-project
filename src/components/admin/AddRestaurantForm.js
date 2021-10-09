@@ -14,7 +14,7 @@ const AddRestaurantForm = () => {
   const history = useHistory();
 
   const chooseImage = async () => {
-    await imgRef.current.click();
+    imgRef.current.click();
   };
 
   const submitHandler = () => {
